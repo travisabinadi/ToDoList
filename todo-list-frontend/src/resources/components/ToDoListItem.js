@@ -11,6 +11,7 @@ import IconButton from '@material-ui/core/IconButton';
 import EditIcon from '@material-ui/icons/Edit';
 import { ReactReduxContext } from 'react-redux'
 import Tooltip from '@material-ui/core/Tooltip';
+import EditModal from './Modal';
 
 
 //Todo item contained within the list.
@@ -33,6 +34,7 @@ const ToDoItem = (props) => {
                 }
             };
             return <ListItem key={item.id} id={item.id} className="todoListItem" role={undefined} button onClick={handleToggle(item.id)}>
+                {updatingId !== 0 && item.id === updatingId ? <EditModal className="editModal" item={item}/> : <div></div>}
                 <ListItemIcon>
                     <Checkbox
                         edge="start"
