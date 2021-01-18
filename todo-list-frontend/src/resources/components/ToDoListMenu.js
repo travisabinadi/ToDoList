@@ -1,2 +1,4 @@
 
-export const ToDoListMenuOptions = () => <div className="toDoListMenu"></div>
+const ToDoListMenu = () => <div className="toDoListMenu"></div>
+
+export default ToDoListMenu

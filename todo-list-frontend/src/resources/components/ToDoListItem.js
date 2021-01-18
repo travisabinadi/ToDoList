@@ -1,4 +1,6 @@
 
 
 //Todo item contained within the list.
-export const ToDoItem = (props) => <div></div>
+const ToDoItem = (props) => <div>Hi</div>
+
+export default ToDoItem
