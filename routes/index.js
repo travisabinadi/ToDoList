@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 router.get("/", function (req, res, next) {
-  let rawdata = fs.readFileSync('../ToDoList.json');
+  let rawdata = fs.readFileSync('ToDoList.json');
   var store = JSON.parse(rawdata);
   res.send(store);
 });

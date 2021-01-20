@@ -1,8 +1,1 @@
-{
-    "toDoItems": [],
-    "currState":{
-        "filter":"Pending",
-        "updatingItem":"",
-        "title":"Untitled List"
-    }
-}
+{"toDoItems":[],"currState":{"filter":"Pending","updatingItem":"","title":"Untitled List"}}
