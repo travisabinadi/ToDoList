@@ -4,7 +4,6 @@ import {
     applyMiddleware
 } from 'redux'
 import { toDoItems, currState } from './reducers'
-import stateData from './initialState'
 
 //Loger for testing states.
 const logger = store => next => action => {
@@ -18,20 +17,8 @@ const logger = store => next => action => {
     return result
 }
 
-//Save the information to the localstorage as a JSON file for testing
-const saver = store => next => action => {
-    let result = next(action)
-    localStorage['redux-store'] = JSON.stringify(store.getState())
-    return result
-}
+const storeFactory = (initialState = {}) =>
+    applyMiddleware(logger)(createStore)(
+        combineReducers({ toDoItems, currState }), initialState)
 
-//Create the store
-//TODO! Make so the store is filled by the Node.js API
-const storeFactory = (initialState = stateData) =>
-    applyMiddleware(logger, saver)(createStore)(
-        combineReducers({ toDoItems,currState }),
-        (localStorage['redux-store']) ?
-            JSON.parse(localStorage['redux-store']) :
-            initialState
-    )
-export default storeFactory
+export default storeFactory;

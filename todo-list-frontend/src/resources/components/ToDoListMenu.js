@@ -9,8 +9,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 
 const ToDoListMenuOptions = ({ addItem, updateCurrToDoItem }) => <div className="toDoListMenu">
         <ReactReduxContext.Consumer>
-            {({ store }) => {
-                return <div>
+            {({ store }) => <div>
                     <SortTasks currFilter={store.getState().currState.filter} />
                     <Tooltip title="Add">
                         <IconButton edge="end" aria-label="edit" className="addItemBtn" onClick={() => {
@@ -25,7 +24,6 @@ const ToDoListMenuOptions = ({ addItem, updateCurrToDoItem }) => <div className=
                     </Tooltip>
 
                 </div>
-            }
             }
         </ReactReduxContext.Consumer>
     </div>

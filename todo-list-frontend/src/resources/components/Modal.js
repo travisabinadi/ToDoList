@@ -34,7 +34,7 @@ const SimpleModal = ({ updateCurrToDoItem,updateItem, item }) => {
     {
         item.name = document.getElementById("AddItemTxtModal"+item.id).value
         updateItem(item)
-        updateCurrToDoItem({ type: "UPDATE_CURR_ITEM", id: 0 })
+        updateCurrToDoItem({ type: "UPDATE_CURR_ITEM", id: "" })
     }
     return <Modal
                     open={true}

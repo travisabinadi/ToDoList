@@ -27,18 +27,19 @@ const ToDoItem = (props) => {
                 //This if check is to see if the modal is open. If it is, don't automatically
                 //refresh. This is because the modal the opens is directly be connected
                 //to the check box.
-                if(updatingId === 0)
+                if(updatingId === "")
                 {
                     item.status = item.status ? false : true;
                     updateItem(item)
                 }
             };
             return <ListItem key={item.id} id={item.id} className="todoListItem" role={undefined} button onClick={handleToggle(item.id)}>
-                {updatingId !== 0 && item.id === updatingId ? <EditModal className="editModal" item={item}/> : <div></div>}
+                {updatingId !== "" && item.id === updatingId ? <EditModal className="editModal" item={item}/> : <div></div>}
                 <ListItemIcon>
                     <Checkbox
                         edge="start"
                         checked={item.status}
+                        color="primary"
                         tabIndex={-1}
                         disableRipple
                         inputProps={{ 'aria-labelledby': labelId }}
