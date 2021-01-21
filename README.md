@@ -1,4 +1,6 @@
 This To Do List web application was developed for a job application with Kadince.
+The application consists of a Create React App front end implementing a React-Redux store and using
+functional Javascript methodologies. The backend is created using Express.
 
 To get started, first clone the git repository:
 git clone https://github.com/travisabinadi/ToDoList.git
