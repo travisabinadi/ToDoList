@@ -6,7 +6,7 @@ import storeFactory from './resources/store/storeFactory'
 import './resources/css/styles.css';
 
 fetch("https://todo-list-kadince.herokuapp.com/")
-  .then(res => res.json())
+  .then(res => JSON.parse(res))
   .then(res => {
     const serverStore = storeFactory(res);
     //Make so a post action is sent each store update
