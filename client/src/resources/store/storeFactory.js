@@ -1,7 +1,7 @@
 import {
     createStore,
     combineReducers,
-    applyMiddleware
+    // applyMiddleware
 } from 'redux'
 import { toDoItems, currState } from './reducers'
 
