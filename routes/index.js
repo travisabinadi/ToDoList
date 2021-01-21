@@ -4,7 +4,6 @@ const fs = require('fs');
 const path = require('path');
 
 router.get("/store", function (req, res, next) {
-  console.log("You tried GETTING")
   let rawdata = fs.readFileSync('ToDoList.json');
   var store = JSON.parse(rawdata);
   res.send(store);
@@ -18,7 +17,7 @@ router.post("/store", (req, res, next) => {
       console.log("Error saving state!", error) :
       null
   )
-  return res.send("You Successfully Posted the Store!")
+  return res.send("")
 })
 
 module.exports = router;

@@ -36,7 +36,7 @@ app.post("/store", (req, res, next) => {
       console.log("Error saving state!", error) :
       null
   )
-  return res.send("You Successfully Posted the Store!")
+  return res.send("")
 })
 
 // catch 404 and forward to error handler

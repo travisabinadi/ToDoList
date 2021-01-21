@@ -7,7 +7,6 @@ import './resources/css/styles.css';
 
 fetch("/store")
   .then(res => {
-    console.log(res)
     return res.json()
   })
   .then(res => {

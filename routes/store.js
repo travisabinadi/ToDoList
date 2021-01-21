@@ -18,7 +18,7 @@ router.post("/store", (req, res, next) => {
       console.log("Error saving state!", error) :
       null
   )
-  return res.send("You Successfully Posted the Store!")
+  return res.send("")
 })
 
 module.exports = router;

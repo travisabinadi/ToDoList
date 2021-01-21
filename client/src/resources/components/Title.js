@@ -7,7 +7,7 @@ const ToDoTitle = ({updateTitle}) =>
   <Container maxWidth="sm" className="title">
     <ReactReduxContext.Consumer>
     {({ store }) => {
-      return <input type="text" onKeyPress={e => {if(e.key === "Enter") e.target.blur()}} defaultValue={store.getState().currState.title} onChange={e => updateTitle(e.target.defaultValue)} onFocus={e => e.target.select()} className="ToDoListTitleTxt"/>
+      return <input type="text" onKeyPress={e => {if(e.key === "Enter") e.target.blur()}} defaultValue={store.getState().currState.title} onChange={e => updateTitle(e.target.value)} onFocus={e => e.target.select()} className="ToDoListTitleTxt"/>
     }}
     </ReactReduxContext.Consumer>
   </Container>
@@ -16,8 +16,8 @@ const ToDoTitle = ({updateTitle}) =>
 
 const mapDispatchToProps = dispatch =>
 ({
-  updateTitle(item) {
-      dispatch(updateToDoTitle(item))
+  updateTitle(title) {
+      dispatch(updateToDoTitle(title))
   }
 })
 const Title = connect(
