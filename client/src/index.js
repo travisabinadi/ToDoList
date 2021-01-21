@@ -10,8 +10,8 @@ fetch("https://todo-list-kadince.herokuapp.com/")
     return res.text()
   })
   .then(res => {
-    console.log(res)
-    const serverStore = storeFactory(res);
+    
+    const serverStore = storeFactory(JSON.parse(res));
     //Make so a post action is sent each store update
     serverStore.subscribe(() => {
       postData("https://todo-list-kadince.herokuapp.com/", serverStore.getState())
