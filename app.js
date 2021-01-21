@@ -5,8 +5,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require("cors");
 const bodyParser = require('body-parser');
+const fs = require('fs');
 
-var indexRouter = require('./routes/index');
+var storeRouter = require('./routes/store');
 
 var app = express();
 const whitelist =
@@ -39,7 +40,22 @@ const corsOptions = {
 }
 app.use(cors(corsOptions))
 
-app.use('/', indexRouter);
+app.get("/store", function (req, res, next) {
+  let rawdata = fs.readFileSync('ToDoList.json');
+  var store = JSON.parse(rawdata);
+  res.send(store);
+});
+
+app.post("/store", (req, res, next) => {
+  var store = JSON.stringify(req.body);
+  fs.writeFile(path.join(__dirname, '../ToDoList.json'),
+    store,
+    error => (error) ?
+      console.log("Error saving state!", error) :
+      null
+  )
+  return res.send("You Successfully Posted the Store!")
+})
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -47,8 +63,9 @@ app.use(function (req, res, next) {
 });
 
 // Handle React routing, return all requests to React app
-app.get('*', function (req, res) {
+app.get('/*', function (req, res, next) {
   res.sendFile(path.join(__dirname, '/client', 'index.html'));
+  next();
 });
 
 
