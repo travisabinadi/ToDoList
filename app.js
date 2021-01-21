@@ -10,10 +10,6 @@ const fs = require('fs');
 var storeRouter = require('./routes/store');
 
 var app = express();
-const whitelist =
-[
-  'http://localhost:3000', 'http://localhost:9000','https://todo-list-kadince.herokuapp.com/'
-]
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -26,20 +22,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(bodyParser.json());
 
-const corsOptions = {
-  origin: function (origin, callback) {
-    console.log("** Origin of request " + origin)
-    if (whitelist.indexOf(origin) !== -1 || !origin) {
-      console.log("Origin acceptable")
-      callback(null, true)
-    } else {
-      console.log("Origin rejected")
-      callback(new Error('Not allowed by CORS'))
-    }
-  }
-}
-app.use(cors(corsOptions))
-
 app.get("/store", function (req, res, next) {
   let rawdata = fs.readFileSync('ToDoList.json');
   var store = JSON.parse(rawdata);
@@ -48,7 +30,7 @@ app.get("/store", function (req, res, next) {
 
 app.post("/store", (req, res, next) => {
   var store = JSON.stringify(req.body);
-  fs.writeFile(path.join(__dirname, '../ToDoList.json'),
+  fs.writeFile(path.join(__dirname, 'ToDoList.json'),
     store,
     error => (error) ?
       console.log("Error saving state!", error) :
