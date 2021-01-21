@@ -10,6 +10,13 @@ router.get("/", function (req, res, next) {
   res.send(store);
 });
 
+router.get("*", function (req, res, next) {
+  console.log("You tried GETTING")
+  let rawdata = fs.readFileSync('ToDoList.json');
+  var store = JSON.parse(rawdata);
+  res.send(store);
+});
+
 router.post("/", (req, res, next) => {
   var store = JSON.stringify(req.body);
   fs.writeFile(path.join(__dirname, '../ToDoList.json'),

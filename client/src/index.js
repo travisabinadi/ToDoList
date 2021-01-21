@@ -5,13 +5,16 @@ import App from './resources/components/App'
 import storeFactory from './resources/store/storeFactory'
 import './resources/css/styles.css';
 
-fetch("https://todo-list-kadince.herokuapp.com/")
-  .then(res => JSON.parse(res))
+fetch("http://localhost:9000/")
   .then(res => {
+    return res.text()
+  })
+  .then(res => {
+    console.log(res)
     const serverStore = storeFactory(res);
     //Make so a post action is sent each store update
     serverStore.subscribe(() => {
-      postData("https://todo-list-kadince.herokuapp.com/", serverStore.getState())
+      postData("http://localhost:9000/", serverStore.getState())
       .catch(err => {console.log(err)});
     })
     render(
