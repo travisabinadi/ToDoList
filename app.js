@@ -7,7 +7,6 @@ var cors = require("cors");
 const bodyParser = require('body-parser');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 
 var app = express();
 const whitelist =
@@ -41,7 +40,6 @@ const corsOptions = {
 app.use(cors(corsOptions))
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
